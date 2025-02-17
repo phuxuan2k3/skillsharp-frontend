@@ -6,7 +6,7 @@ import GradientBorderGood from "../../../../components/GradientBorder.good";
 import TestCard from "./TestCard";
 import { DifficultyLevel, FilterParams, useGetTestListPageDataQuery, useLazyGetFilteredQuery } from "./list.test-api";
 import FilterModal from "./FilterModal";
-import FetchStateContent from "../../components/FetchStateContent";
+import FetchStateContent from "../../../../components/redux-api/FetchStateContent";
 import MyPagination from "../../components/MyPagination";
 import { useLazyGetCompaniesQuery } from "../../../../features/Account/account.api";
 

@@ -1,20 +1,27 @@
 import React from 'react';
 import { format, formatDistanceToNow } from 'date-fns';
-import GradientBorderGood from '../../../../components/GradientBorder.good';
+import GradientBorderGood from '../../../../../../components/GradientBorder.good';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { Attempt, TestAttemptsProps, TestStatus } from './types';
+import { Attempt, TestAttemptsProps } from '../types';
+import { useNavigate } from 'react-router-dom';
+import { paths } from '../../../../../../router/path';
 
-interface AttemptCardProps {
+interface AttemptCardFinishedProps {
 	attempt: Attempt;
 	companyProps: { imageUrl: string; name: string };
 	testAttemptsProps: TestAttemptsProps;
-	handleOnAttemptClick: (attemptId: string, attemptStatus: TestStatus) => void;
 }
 
-const AttemptCard: React.FC<AttemptCardProps> = ({ attempt, companyProps, testAttemptsProps, handleOnAttemptClick }) => {
+const AttemptCardFinished: React.FC<AttemptCardFinishedProps> = ({ attempt, companyProps, testAttemptsProps }) => {
+	const navigate = useNavigate();
+
+	const handleOnAttemptClick = () => {
+		navigate(paths.TEST.viewAnswer(attempt.ID));
+	};
+
 	return (
-		<div key={attempt.ID} className="bg-[#EAF6F8] p-4 mb-4 rounded-lg shadow-md cursor-pointer" onClick={() => handleOnAttemptClick(attempt.ID, attempt.status)}>
+		<div key={attempt.ID} className="bg-[#EAF6F8] p-4 mb-4 rounded-lg shadow-md cursor-pointer" onClick={handleOnAttemptClick}>
 			<div className="flex flex-row border-b border-primary pb-4 items-center gap-3 mb-3 h-fit">
 				<img className="w-12 h-12 rounded-full" src={companyProps.imageUrl} alt={companyProps.name} />
 				<div className="flex flex-col h-fit">
@@ -62,4 +69,4 @@ const AttemptCard: React.FC<AttemptCardProps> = ({ attempt, companyProps, testAt
 	);
 };
 
-export default AttemptCard;
+export default AttemptCardFinished;

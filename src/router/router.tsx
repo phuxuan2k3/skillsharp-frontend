@@ -1,14 +1,14 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Login from "../pages/Authen/login/Login";
 import Dashboard from "../pages/Dashboard";
-import TestDo from "../pages/Test/Candidate/TestDo/TestDo";
+import TestDo from "../pages/Test/Candidate/[id]/do/page";
 import { paths } from "./path"
 import Register from "../pages/Authen/register/Register";
 import TestList from "../pages/Test/Candidate/TestList/TestList";
 import Layout from "../pages/Test/components/Layout";
-import TestDetail from "../pages/Test/Candidate/TestAttempts/TestAttempts";
+import TestDetail from "../pages/Test/Candidate/[id]/attempts/page";
 import TestEvaluate from "../pages/Test/Candidate/TestEvaluate/TestEvaluate";
-import ErrorPage from "../components/ErrorPage";
+import ErrorPage from "../components/errors/ErrorPage";
 import TestSchedule from "../pages/Test/Candidate/TestSchedule/TestSchedule";
 import TestViewAnswer from "../pages/Test/Candidate/TestViewAnswer/TestViewAnswer";
 import TestSubmissionListView from "../pages/Test/BusinessManager/TestSubmissionListView/TestSubmissionListView";

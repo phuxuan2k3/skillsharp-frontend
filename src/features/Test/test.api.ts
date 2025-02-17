@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { backendEndpoint } from "../../app/env"
+import { url } from "../../app/env"
 
-const testBackendURL = backendEndpoint + '/thresh/api/test';
-console.log('testBackendURL:', testBackendURL);
+const threshUrl = url.thresh.base;
+console.log('Thresh Url:', threshUrl);
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: testBackendURL,
+	baseUrl: threshUrl,
 	prepareHeaders: (headers) => {
 		headers.set('Content-Type', 'application/json');
 		headers.set('Authorization', `Bearer token`); // todo: replace with actual token

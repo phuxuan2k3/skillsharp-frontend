@@ -2,12 +2,15 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../../../components/Navbar";
 import FooterShort from "../../../components/FooterShort";
 import { paths } from "../../../router/path";
+import { TestContextProvider } from "../Candidate/context";
 
 export default function Layout() {
 	const navigate = useNavigate();
+
 	function handleHomeClick() {
 		navigate(paths.HOME);
 	}
+
 	function handleQuestionClick() {
 		navigate(paths.TEST.LIST);
 	}
@@ -23,9 +26,11 @@ export default function Layout() {
 						<span onClick={handleQuestionClick} className="underline cursor-pointer">Question</span>
 					</span>
 				</div>
-				<Outlet />
+				<TestContextProvider>
+					<Outlet />
+				</TestContextProvider>
 			</div>
 			<FooterShort />
 		</div>
-	)
+	);
 }

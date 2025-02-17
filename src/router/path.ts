@@ -19,9 +19,9 @@ export const paths = {
 			return `/test/${testId}/attempts`;
 		},
 
-		VIEWANSWER: '/test/:testId/viewanswer/:attemptId',
-		viewAnswer(testId: string, attemptId: string): string {
-			return `/test/${testId}/viewanswer/${attemptId}`;
+		VIEWANSWER: '/test/attempts/:attemptId',
+		viewAnswer(attemptId: string): string {
+			return `/test/attempts/${attemptId}`;
 		},
 
 		EVALUATE: '/test/:testId/evaluate',

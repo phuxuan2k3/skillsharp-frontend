@@ -1,5 +1,5 @@
 import { BaseQueryApi, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
-import { backendEndpoint } from '../../app/env';
+import { backendUrl } from '../../app/env';
 // import { RootState } from '../../app/store';
 import { AuthStateResponse, clearAuthState, selectTokens } from '../../global/authSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -64,7 +64,7 @@ const customFetchQuery = async (args: FetchArgs, api: BaseQueryApi, extraOptions
 		};
 	}
 
-	const backendFetchQuery = fetchBaseQuery({ baseUrl: backendEndpoint });
+	const backendFetchQuery = fetchBaseQuery({ baseUrl: backendUrl });
 	return backendFetchQuery(args, api, extraOptions);
 };
 

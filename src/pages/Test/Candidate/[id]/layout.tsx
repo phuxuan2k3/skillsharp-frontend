@@ -11,8 +11,7 @@ export default function TestDetailLayout({ children }: Props) {
 	if (!testId) throw new Error('Test ID is required');
 
 	useEffect(() => {
-		socketTestProcess.connect();
-		socketTestProcess.emitRegisterProcess(testId);
+		socketTestProcess.connect(testId);
 		return () => {
 			socketTestProcess.disconnect();
 		};

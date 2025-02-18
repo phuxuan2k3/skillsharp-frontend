@@ -1,4 +1,4 @@
-import { AnswerProps } from "../types";
+import { AnswerProps } from "../do/types";
 
 const save = (testId: string, answers: AnswerProps[], flaggedQuestions: Set<number>) => {
 	localStorage.setItem(testId, JSON.stringify({

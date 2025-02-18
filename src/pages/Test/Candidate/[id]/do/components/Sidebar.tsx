@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
-import Timer from "../../components/Timer";
 import { paths } from "../../../../../../router/path";
 import { usePostSubmitMutation } from "../api";
 import { AnswerProps } from "../types";
+import Timer from "../../components/Timer";
 
 interface SidebarProps {
 	answers: AnswerProps[];
@@ -43,8 +43,8 @@ export default function Sidebar({ answers, flaggedQuestions, currentQuestionInde
 
 	return (
 		<div className="flex flex-col w-64 ml-4">
-			<div className="font-bold" >
-				<Timer endedAt={endedAt} />
+			<div className="font-bold text-xl flex justify-center mb-4" >
+				<Timer testId={testId} endedAt={endedAt} />
 			</div>
 			<div className="bg-white rounded-lg shadow-primary p-6 border-r border-b border-primary">
 				<div className="mb-4 font-semibold">Quiz navigation</div>
@@ -62,7 +62,7 @@ export default function Sidebar({ answers, flaggedQuestions, currentQuestionInde
 								}`}
 							onClick={() => setCurrentQuestionIndex(questionId)}
 						>
-							{index}
+							{index + 1}
 						</button>
 					))}
 				</div>

@@ -11,7 +11,6 @@ import { Paged } from '../../../../../interfaces/paged.type';
 import AttemptCardFinished from './components/AttemptCardFinished';
 import AttemptCardInProgress from './components/AttemptCardInProgress';
 import Sidebar from './components/Sidebar';
-import { socketTestProcess } from '../../../../../features/Test/test-process.socket';
 
 const perPage = 5;
 const bufferTestResponseData: TestAttemptsResponse = {

@@ -1,22 +1,16 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
-import { paths } from '../../../../../router/path';
 import { socketTestProcess } from '../../../../../features/Test/test-process.socket';
+import { formatTime } from '../../../../../helpers/time';
 
 interface Props {
 	endedAt: Date;
+	testId: string;
 }
 
-export default function Timer({ endedAt }: Props) {
-	const navigate = useNavigate();
-	const [timeLeft, setTimeLeft] = useState(0);
-	const { testId } = useParams<{ testId: string }>();
-	if (!testId) throw new Error("Test ID is undefined");
+export default function Timer({ endedAt, testId }: Props) {
+	const timeLeftUpdate = (new Date(endedAt).getTime() - new Date().getTime()) / 1000;
 
-	const timeLeftUpdate = (endedAt.getTime() - new Date().getTime()) / 1000;
-	if (timeLeftUpdate < 0) {
-		navigate(paths.TEST.attempts(testId));
-	}
+	const [timeLeft, setTimeLeft] = useState(timeLeftUpdate);
 
 	useEffect(() => {
 		socketTestProcess.onSync((data: number) => {
@@ -31,18 +25,12 @@ export default function Timer({ endedAt }: Props) {
 		setTimeLeft(timeLeftUpdate);
 		const timer = setInterval(() => {
 			setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
-		}, 1000);
+		}, 50);
 		return () => clearInterval(timer);
 	}, [timeLeftUpdate]);
 
-	const formatTime = (seconds: number) => {
-		const minutes = Math.floor(seconds / 60);
-		const remainingSeconds = seconds % 60;
-		return `${minutes.toString().padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
-	};
-
 	return (
-		<div className={`text-${timeLeft <= 60 ? 'primary' : 'secondary'}-500`}>
+		<div className={`text-primary`}>
 			{formatTime(timeLeft)}
 		</div>
 	)

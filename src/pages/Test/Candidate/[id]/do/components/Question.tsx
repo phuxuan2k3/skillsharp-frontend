@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { AnswerProps, QuestionProps } from "../types";
-import { save } from "./localStore";
+import { save } from "../../components/localStore";
 
 interface QuestionComponentProps {
 	indexMapQuestion: Map<number, QuestionProps>;
@@ -100,13 +100,17 @@ const QuestionComponent: React.FC<QuestionComponentProps> = ({
 						<p className="w-fit mt-4 text-[#A04D38] px-6 py-2 hover:underline cursor-pointer" onClick={() => handleAnswerQuestion(-1)}>Clear my choice</p>
 					</div>
 				</div>
-				<div className="flex justify-between">
-					<button disabled={isLastQuestion} className="text-md font-bold bg-gradient-text text-white px-6 py-2 rounded-lg" onClick={handleNextQuestion}>
-						Next
-					</button>
-					<button disabled={isFirstQuestion} className="text-md font-bold bg-gradient-text text-white px-6 py-2 rounded-lg" onClick={handlePreviousQuestion}>
-						Previous
-					</button>
+				<div className="flex flex-row">
+					{!isFirstQuestion &&
+						<button className="text-md font-bold bg-gradient-text text-white px-6 py-2 rounded-lg mr-auto" onClick={handlePreviousQuestion}>
+							Previous
+						</button>
+					}
+					{!isLastQuestion &&
+						<button className="text-md font-bold bg-gradient-text text-white px-6 py-2 rounded-lg ml-auto" onClick={handleNextQuestion}>
+							Next
+						</button>
+					}
 				</div>
 			</div>
 		</div>

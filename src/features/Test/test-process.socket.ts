@@ -1,27 +1,26 @@
 import io, { Socket } from 'socket.io-client';
 import { url } from '../../app/env';
 
-const threshUrl = url.thresh.base;
-
 class SocketTestProcess {
 	private readonly _instance: Socket;
+	private _hasConnected: boolean = false;
 
 	constructor() {
-		this._instance = io(threshUrl + '/test-process', {
+		this._instance = io(url.thresh.socket + '/test-process', {
 			autoConnect: false,
 		});
+		this._hasConnected = false;
 	}
 
-	connect() {
+	connect(testId: string) {
+		if (this._hasConnected) return;
 		this._instance.connect();
+		this._instance.emit('register-process', testId);
+		this._hasConnected = true;
 	}
 
 	disconnect() {
 		this._instance.disconnect();
-	}
-
-	emitRegisterProcess(testId: string) {
-		this._instance.emit('register-process', testId);
 	}
 
 	onSync(callback: (data: number) => void) {

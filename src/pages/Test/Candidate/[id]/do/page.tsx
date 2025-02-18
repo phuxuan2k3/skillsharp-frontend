@@ -6,8 +6,8 @@ import { socketTestProcess } from '../../../../../features/Test/test-process.soc
 import FetchStateContent from '../../../../../components/redux-api/FetchStateContent';
 import QuestionComponent from './components/Question';
 import Sidebar from './components/Sidebar';
-import { load, save } from './components/localStore';
-import { orderedArrayEqual } from '../../../../../utils/equals';
+import { load, save } from '../components/localStore';
+import { orderedArrayEqual } from '../../../../../helpers/equals';
 import { AnswerProps, QuestionProps } from './types';
 
 const TestDo = () => {
@@ -18,14 +18,16 @@ const TestDo = () => {
 	const [indexMapQuestion, setIndexMapQuestion] = useState<Map<number, QuestionProps>>(new Map());
 	const { testId } = useParams<{ testId: string }>();
 	if (!testId) throw new Error("Test ID or Question ID is undefined");
-
 	const { data, isLoading, error } = useGetTestDoPageQuery(testId);
-	if (!data) return null;
 
 	useEffect(() => {
 		socketTestProcess.onTimeout(() => {
 			navigate(paths.TEST.attempts(testId));
 		});
+	}, [testId]);
+
+	useEffect(() => {
+		if (!data) return;
 		const loaded = load(testId);
 		if (
 			loaded == null ||
@@ -47,6 +49,8 @@ const TestDo = () => {
 		});
 		setIndexMapQuestion(indexMapNew);
 	}, [data]);
+
+	if (!data) return null;
 
 	return (
 		<div className="w-full flex-grow flex flex-col items-center px-4">

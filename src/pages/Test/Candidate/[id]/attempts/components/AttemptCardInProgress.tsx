@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { format, formatDistanceToNow } from 'date-fns';
 import GradientBorderGood from '../../../../../../components/GradientBorder.good';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +17,7 @@ interface AttemptCardInProgressProps {
 
 const AttemptCardInProgress: React.FC<AttemptCardInProgressProps> = ({ companyProps, testAttemptsProps }) => {
 	const navigate = useNavigate();
+	const testId = testAttemptsProps.ID;
 	const { isLoading, error, data: attempt } = useGetCurrentAttemptQuery(testAttemptsProps.ID);
 	if (attempt == null) return null;
 
@@ -46,7 +47,7 @@ const AttemptCardInProgress: React.FC<AttemptCardInProgressProps> = ({ companyPr
 							</GradientBorderGood>
 						))}
 					</div>
-					<Timer endedAt={attempt.endDate} />
+					<Timer testId={testId} endedAt={attempt.endDate} />
 					<div className="flex flex-row text-xl font-bold mb-2">
 						<span className="text-[#39A0AD] whitespace-pre">
 							{attempt.score === null ? null : "Your grade for this quiz is: "}

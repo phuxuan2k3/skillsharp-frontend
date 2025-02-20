@@ -17,10 +17,13 @@ class SocketTestProcess {
 		this._instance.connect();
 		this._instance.emit('register-process', testId);
 		this._hasConnected = true;
+		console.log('Connected to test-process socket: ', this._instance.id);
 	}
 
 	disconnect() {
 		this._instance.disconnect();
+		this._hasConnected = false;
+		console.log('Disconnected from test-process socket: ', this._instance.id);
 	}
 
 	onSync(callback: (data: number) => void) {

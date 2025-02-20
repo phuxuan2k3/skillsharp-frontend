@@ -52,15 +52,15 @@ export default function Sidebar({ answers, flaggedQuestions, currentQuestionInde
 					{answers.map(({ questionId, optionId }, index) => (
 						<button
 							key={questionId}
-							className={`w-10 h-10 rounded-full text-sm font-bold text-primary border border-primary cursor-pointer ${questionId === currentQuestionIndex
-								? "bg-primary"
+							className={`w-10 h-10 rounded-full text-sm font-bold text-primary border border-primary cursor-pointer ${currentQuestionIndex === index
+								? "bg-primary-toned-600 text-white"
 								: flaggedQuestions.has(questionId)
-									? "bg-secondary"
+									? "bg-secondary-toned-200"
 									: optionId !== -1
-										? "bg-primary-toned-300"
+										? "bg-primary-toned-200"
 										: "bg-white"
 								}`}
-							onClick={() => setCurrentQuestionIndex(questionId)}
+							onClick={() => setCurrentQuestionIndex(index)}
 						>
 							{index + 1}
 						</button>

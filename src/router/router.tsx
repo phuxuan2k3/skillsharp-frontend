@@ -26,6 +26,7 @@ import ScenarioCreateDetail from "../pages/Scenario/BusinessManager/ScenarioCrea
 import ScenarioCreateQuestion from "../pages/Scenario/BusinessManager/ScenarioCreateQuestion/ScenarioCreateQuestion";
 import ScenarioEditDetail from "../pages/Scenario/BusinessManager/ScenarioEditDetail/ScenarioEditDetail";
 import ScenarioEditQuestion from "../pages/Scenario/BusinessManager/ScenarioEditQuestion/ScenarioEditQuestion";
+import TestDetailLayout from "../pages/Test/Candidate/[id]/layout";
 const router = createBrowserRouter([
 	{
 		errorElement: <ErrorPage />,
@@ -51,12 +52,17 @@ const router = createBrowserRouter([
 						element: <TestList />,
 					},
 					{
-						path: paths.TEST.DO,
-						element: <TestDo />
-					},
-					{
-						path: paths.TEST.ATTEMPTS,
-						element: <TestDetail />
+						element: <TestDetailLayout />,
+						children: [
+							{
+								path: paths.TEST.DO,
+								element: <TestDo />
+							},
+							{
+								path: paths.TEST.ATTEMPTS,
+								element: <TestDetail />
+							},
+						]
 					},
 					{
 						path: paths.TEST.VIEWANSWER,
@@ -70,6 +76,8 @@ const router = createBrowserRouter([
 						path: paths.TEST.SCHEDULE,
 						element: <TestSchedule />
 					},
+
+					// Business Manager
 					{
 						path: paths.TEST.SUBMISSION.ROOT,
 						children: [

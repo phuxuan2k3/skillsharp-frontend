@@ -1,12 +1,9 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { socketTestProcess } from "../../../../features/Test/test-process.socket";
 
-interface Props {
-	children: React.ReactNode;
-}
 
-export default function TestDetailLayout({ children }: Props) {
+export default function TestDetailLayout() {
 	const { testId } = useParams<{ testId: string }>();
 	if (!testId) throw new Error('Test ID is required');
 
@@ -17,5 +14,5 @@ export default function TestDetailLayout({ children }: Props) {
 		};
 	}, []);
 
-	return children;
+	return <Outlet />;
 }

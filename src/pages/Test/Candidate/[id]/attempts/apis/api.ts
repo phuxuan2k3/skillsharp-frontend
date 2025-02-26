@@ -1,12 +1,15 @@
-import testApi from "../../../../../features/Test/test.api";
-import { Paged } from "../../../../../interfaces/paged.type";
-import { Attempt, CurrentAttempt, FilterParams, TestAttemptsResponse } from "./types";
+import testApi from "../../../../../../features/Test/test.api";
+import { Paged } from "../../../../../../interfaces/paged.type";
+import { Attempt, FilterParams, TestAttemptsResponse } from "../types";
+import { CurrentAttemptSmallResult } from "./result";
+
 
 const attemptApi = testApi.injectEndpoints({
 	endpoints: (builder) => ({
 		getTestDisplay: builder.query<TestAttemptsResponse, string>({
 			query: (testId) => `/${testId}/attempts/page`
 		}),
+
 		getAttempts: builder.query<Paged<Attempt>, FilterParams>({
 			query: (filter) => ({
 				url: `/${filter.testId}/attempts/data`,
@@ -16,9 +19,11 @@ const attemptApi = testApi.injectEndpoints({
 				},
 			})
 		}),
-		getCurrentAttempt: builder.query<CurrentAttempt, string>({
+
+		getCurrentAttemptSmall: builder.query<CurrentAttemptSmallResult, string>({
 			query: (testId) => `/${testId}/current`
 		}),
+
 		postNewAttempt: builder.mutation<void, string>({
 			query: (testId) => ({
 				url: `/${testId}/current/new`,
@@ -32,6 +37,6 @@ const attemptApi = testApi.injectEndpoints({
 export const {
 	useGetTestDisplayQuery,
 	useLazyGetAttemptsQuery,
-	useGetCurrentAttemptQuery,
+	useGetCurrentAttemptSmallQuery,
 	usePostNewAttemptMutation,
 } = attemptApi;

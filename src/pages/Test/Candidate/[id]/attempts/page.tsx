@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetTestDisplayQuery, useLazyGetAttemptsQuery } from './api';
+import { useGetTestDisplayQuery, useLazyGetAttemptsQuery } from './apis/api';
 import { TestAttemptsResponse } from "./types";
 import { Attempt, FilterParams, TestAttemptsProps } from './types';
 import FetchStateContent from '../../../../../components/redux-api/FetchStateContent';

@@ -7,8 +7,8 @@ import { TestAttemptsProps } from '../types';
 import { useNavigate } from 'react-router-dom';
 import { paths } from '../../../../../../router/path';
 import FetchStateContent from '../../../../../../components/redux-api/FetchStateContent';
-import { useGetCurrentAttemptQuery } from '../api';
 import Timer from '../../components/Timer';
+import { useGetCurrentAttemptSmallQuery } from '../apis/api';
 
 interface AttemptCardInProgressProps {
 	companyProps: { imageUrl: string; name: string };
@@ -18,8 +18,8 @@ interface AttemptCardInProgressProps {
 const AttemptCardInProgress: React.FC<AttemptCardInProgressProps> = ({ companyProps, testAttemptsProps }) => {
 	const navigate = useNavigate();
 	const testId = testAttemptsProps.ID;
-	const { isLoading, error, data: attempt } = useGetCurrentAttemptQuery(testAttemptsProps.ID);
-	if (attempt == null) return null;
+	const { isLoading, error, data } = useGetCurrentAttemptSmallQuery(testAttemptsProps.ID);
+	if (data == null) return null;
 
 	const handleOnAttemptClick = () => {
 		navigate(paths.TEST.do(testAttemptsProps.ID));
@@ -28,7 +28,7 @@ const AttemptCardInProgress: React.FC<AttemptCardInProgressProps> = ({ companyPr
 	return (
 		<FetchStateContent isLoading={isLoading} error={error}>
 			<div className="bg-white rounded-lg shadow-primary p-6 border-r border-b border-primary">
-				<div key={attempt.ID} className="bg-secondary-toned-50 p-4 mb-4 rounded-lg shadow-md cursor-pointer" onClick={() => handleOnAttemptClick()}>
+				<div key={data.ID} className="bg-secondary-toned-50 p-4 mb-4 rounded-lg shadow-md cursor-pointer" onClick={() => handleOnAttemptClick()}>
 					<div className="flex flex-row border-b border-secondary pb-4 items-center gap-3 mb-3 h-fit">
 						<img className="w-12 h-12 rounded-full" src={companyProps.imageUrl} alt={companyProps.name} />
 						<div className="flex flex-col h-fit">
@@ -47,29 +47,19 @@ const AttemptCardInProgress: React.FC<AttemptCardInProgressProps> = ({ companyPr
 							</GradientBorderGood>
 						))}
 					</div>
-					<Timer testId={testId} endedAt={attempt.endDate} />
 					<div className="flex flex-row text-xl font-bold mb-2">
-						<span className="text-[#39A0AD] whitespace-pre">
-							{attempt.score === null ? null : "Your grade for this quiz is: "}
-						</span>
-						<span className="text-[#2E808A]">
-							{attempt.score === null ? null : `${attempt.score}`}
-						</span>
+						<Timer testId={testId} endedAt={new Date(data.endedAt)} />
 					</div>
 					<div className="flex flex-row font-semibold mb-2 text-[#39A0AD] items-center">
-						<div className="text-lg">
-							{`${attempt.status}`}
-						</div>
+						<div className="text-lg">In Progress</div>
 						<div className="ml-20">
-							{`Submitted at ${format(new Date(attempt.createdAt), "PPPP")}`}
+							{`Submitted at ${format(new Date(data.startedAt), "PPPP")}`}
 						</div>
 					</div>
 					<div className="mt-6 flex flex-row items-start bg-gray-50 rounded-xl px-6 py-4 justify-between font-sans">
-						<span className=" text-blue-chill-600 italic font-medium">
-							Answer: {attempt.score ?? "Not yet graded"}
-						</span>
+						<span className=" text-blue-chill-600 italic font-medium">Not yet graded</span>
 						<div className="font-semibold flex items-center min-w-fit cursor-pointer">
-							<span className="whitespace-pre">{attempt.status === "Finished" ? "Review" : "Continue"} </span>
+							<span className="whitespace-pre">Continue</span>
 							<FontAwesomeIcon icon={faCaretDown} />
 						</div>
 					</div>

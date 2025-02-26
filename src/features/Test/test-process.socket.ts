@@ -1,8 +1,8 @@
-import io, { Socket } from 'socket.io-client';
+import io from 'socket.io-client';
 import { url } from '../../app/env';
 
 class SocketTestProcess {
-	private readonly _instance: Socket;
+	private readonly _instance: SocketIOClient.Socket;
 	private _hasConnected: boolean = false;
 
 	constructor() {
@@ -32,6 +32,10 @@ class SocketTestProcess {
 
 	onTimeout(callback: () => void) {
 		this._instance.on('timeout', callback);
+	}
+
+	onAnswered(callback: (data: { questionId: number, optionId: number }[]) => void) {
+		this._instance.on('answered', callback);
 	}
 }
 

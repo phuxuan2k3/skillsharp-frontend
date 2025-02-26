@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { paths } from "../../../../../../router/path";
-import { usePostSubmitMutation } from "../api";
+import { usePostSubmitMutation } from "../apis/api";
 import { AnswerProps } from "../types";
 import Timer from "../../components/Timer";
 
@@ -24,15 +24,7 @@ export default function Sidebar({ answers, flaggedQuestions, currentQuestionInde
 	}
 
 	const handleSubmitClick = async () => {
-		const answersArray = answers.map(({ questionId, optionId }) => ({
-			questionId,
-			optionId
-		}));
-		const submitData = {
-			testId,
-			answers: answersArray
-		};
-		const res = await submitTest(submitData);
+		const res = await submitTest(testId);
 		if (res.error) {
 			console.error(res.error);
 		}
@@ -40,6 +32,8 @@ export default function Sidebar({ answers, flaggedQuestions, currentQuestionInde
 			navigate(paths.TEST.attempts(testId));
 		}
 	}
+
+	console.log(flaggedQuestions);
 
 	return (
 		<div className="flex flex-col w-64 ml-4">

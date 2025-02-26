@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { paths } from "../../../../../../router/path";
-import { usePostNewAttemptMutation } from "../api";
+import { usePostNewAttemptMutation } from "../apis/api";
 
 export default function Sidebar() {
 	const navigate = useNavigate();

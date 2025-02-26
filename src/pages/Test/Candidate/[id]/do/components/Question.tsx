@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { AnswerProps, QuestionProps } from "../types";
-import { save } from "../../components/localStore";
 
 interface QuestionComponentProps {
-	indexMapQuestion: Map<number, QuestionProps>;
+	currentQuestion: QuestionProps;
+	totalQuestion: number;
 	currentQuestionIndex: number;
 	setCurrentQuestionIndex: (index: number) => void;
 	answers: AnswerProps[];
@@ -13,7 +13,8 @@ interface QuestionComponentProps {
 }
 
 const QuestionComponent: React.FC<QuestionComponentProps> = ({
-	indexMapQuestion,
+	currentQuestion,
+	totalQuestion,
 	currentQuestionIndex,
 	setCurrentQuestionIndex,
 	answers,
@@ -23,23 +24,20 @@ const QuestionComponent: React.FC<QuestionComponentProps> = ({
 }) => {
 	const { testId } = useParams<{ testId: string }>();
 	if (!testId) throw new Error("Test ID is undefined");
-
-	const currentQuestion = indexMapQuestion.get(currentQuestionIndex);
 	if (!currentQuestion) return null;
 	const currentAnswer = answers[currentQuestionIndex];
 	const isFlagged = flaggedQuestions.has(currentQuestionIndex);
-	const questionsLength = indexMapQuestion.size;
 	const isFirstQuestion = currentQuestionIndex === 0;
-	const isLastQuestion = currentQuestionIndex === questionsLength - 1;
+	const isLastQuestion = currentQuestionIndex === totalQuestion - 1;
 
 	const handleNextQuestion = () => {
-		if (currentQuestionIndex < questionsLength) {
+		if (currentQuestionIndex < totalQuestion) {
 			setCurrentQuestionIndex(currentQuestionIndex + 1);
 		}
 	};
 
 	const handlePreviousQuestion = () => {
-		if (currentQuestionIndex > 1) {
+		if (currentQuestionIndex >= 1) {
 			setCurrentQuestionIndex(currentQuestionIndex - 1);
 		}
 	}
@@ -48,7 +46,6 @@ const QuestionComponent: React.FC<QuestionComponentProps> = ({
 		const newAnswers = [...answers];
 		newAnswers[currentQuestionIndex] = { questionId: currentQuestionIndex, optionId: newOptionId };
 		setAnswers(newAnswers);
-		save(testId, newAnswers, flaggedQuestions);
 	}
 
 	const handleFlagQuestionToggle = () => {
@@ -59,7 +56,6 @@ const QuestionComponent: React.FC<QuestionComponentProps> = ({
 			updatedFlags.add(currentQuestion.ID);
 		}
 		setFlaggedQuestions(updatedFlags);
-		save(testId, answers, updatedFlags);
 	}
 
 	return (

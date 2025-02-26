@@ -22,7 +22,4 @@ export type TestAttemptsProps = TestDisplayProps & {
 	highestScore: number;
 }
 
-export type CurrentAttempt = Attempt & {
-	endDate: Date;
-}
 export type TestAttemptsResponse = Omit<TestAttemptsProps, "company"> & { companyId: string; };

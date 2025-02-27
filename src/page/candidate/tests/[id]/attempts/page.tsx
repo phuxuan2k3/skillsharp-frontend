@@ -4,7 +4,7 @@ import { useGetTestDisplayQuery, useLazyGetAttemptsQuery } from './apis/api';
 import { TestAttemptsResponse } from "./types";
 import { Attempt, FilterParams, TestAttemptsProps } from './types';
 import FetchStateContent from '../../../../../components/redux-api/FetchStateContent';
-import MyPagination from '../../../components/MyPagination';
+import MyPagination from '../../../../../pages/Test/components/MyPagination';
 import { useEffect, useState } from 'react';
 import { useGetCompaniesQuery } from '../../../../../features/Account/account.api';
 import { Paged } from '../../../../../interfaces/paged.type';

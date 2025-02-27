@@ -1,5 +1,5 @@
-import testApi from "../../../../features/Test/test.api";
-import { Paged } from "../../../../interfaces/paged.type";
+import testApi from "../../../../../../features/Test/test.api";
+import { Paged } from "../../../../../../interfaces/paged.type";
 import { FilterQuestionAnswerParams, TestQuestionAnswer, TestViewAnswerProps } from "./types";
 
 const viewAnswerApi = testApi.injectEndpoints({

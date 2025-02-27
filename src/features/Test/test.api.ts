@@ -1,16 +1,11 @@
 import { BaseQueryFn, createApi, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
-import { backendEndpoint } from "../../app/env"
 import { RootState } from "../../app/store";
 import { setAuthState, selectTokens, selectUserInfo } from "../../global/authSlice";
 import { grpcRefreshToken } from '../Auth/grpcClient';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { url } from "../../app/env"
 
-const threshUrl = url.thresh.base + '/tests';
-console.log('Thresh Url:', threshUrl);
-
 const baseQuery = fetchBaseQuery({
-	baseUrl: testBackendURL,
+	baseUrl: url.thresh.base,
 	prepareHeaders: async (headers, { getState }) => {
 		const tokens = selectTokens(getState() as RootState);
 		console.log("tokens in baseQuery: ", tokens)
@@ -19,12 +14,6 @@ const baseQuery = fetchBaseQuery({
 			headers.set('Authorization', `Bearer ${tokens.access_token}`);
 		}
 		headers.set('Content-Type', 'application/json');
-		return headers;
-	},
-	baseUrl: threshUrl,
-	prepareHeaders: (headers) => {
-		headers.set('Content-Type', 'application/json');
-		headers.set('Authorization', `Bearer token`); // todo: replace with actual token
 		return headers;
 	},
 });
@@ -68,7 +57,6 @@ const baseQueryWithReauth: BaseQueryFn<any, any, FetchBaseQueryError> = async (a
 			}
 		}
 	}
-
 	return result;
 };
 

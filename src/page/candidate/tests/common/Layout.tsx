@@ -1,8 +1,8 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import Navbar from "../../../components/Navbar";
-import FooterShort from "../../../components/FooterShort";
-import { paths } from "../../../router/path";
-import { TestContextProvider } from "../Candidate/context";
+import Navbar from "../../../../components/Navbar";
+import FooterShort from "../../../../components/FooterShort";
+import { paths } from "../../../../router/path";
+import { TestContextProvider } from "./context";
 
 export default function Layout() {
 	const navigate = useNavigate();

@@ -1,16 +1,16 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Login from "../pages/Authen/login/Login";
-import Dashboard from "../pages/Dashboard";
+import Dashboard from "../page/landing/root/Dashboard";
 import TestDo from "../pages/Test/Candidate/[id]/do/page";
 import { paths } from "./path"
 import Register from "../pages/Authen/register/Register";
 import TestList from "../pages/Test/Candidate/TestList/TestList";
-import Layout from "../pages/Test/components/Layout";
-import TestDetail from "../pages/Test/Candidate/[id]/attempts/page";
-import TestEvaluate from "../pages/Test/Candidate/TestEvaluate/TestEvaluate";
+import Layout from "../page/candidate/tests/common/Layout";
+import TestDetail from "../page/candidate/tests/[id]/attempts/page";
+import TestEvaluate from "../page/candidate/tests/attempts/[id]/evaluation/TestEvaluate";
 import ErrorPage from "../components/errors/ErrorPage";
-import TestSchedule from "../pages/Test/Candidate/TestSchedule/TestSchedule";
-import TestViewAnswer from "../pages/Test/Candidate/TestViewAnswer/TestViewAnswer";
+import TestSchedule from "../page/candidate/tests/attempts/[id]/suggestions/TestSchedule";
+import TestViewAnswer from "../page/candidate/tests/attempts/[id]/root/TestViewAnswer";
 import TestSubmissionListView from "../pages/Test/BusinessManager/TestSubmissionListView/TestSubmissionListView";
 import TestSubmissionDetail from "../pages/Test/BusinessManager/TestSubmissionDetail/TestSubmissionDetail";
 import TestListView from "../pages/Test/BusinessManager/TestListView/TestListView";
@@ -26,7 +26,14 @@ import ScenarioCreateDetail from "../pages/Scenario/BusinessManager/ScenarioCrea
 import ScenarioCreateQuestion from "../pages/Scenario/BusinessManager/ScenarioCreateQuestion/ScenarioCreateQuestion";
 import ScenarioEditDetail from "../pages/Scenario/BusinessManager/ScenarioEditDetail/ScenarioEditDetail";
 import ScenarioEditQuestion from "../pages/Scenario/BusinessManager/ScenarioEditQuestion/ScenarioEditQuestion";
-import TestDetailLayout from "../pages/Test/Candidate/[id]/layout";
+import PickAField from "../pages/InterviewPractice/Candidate/PickAField/PickAField";
+import LayoutInterviewPractice from "../pages/InterviewPractice/component/InterviewLayout";
+import ChooseScenario from "../pages/InterviewPractice/Candidate/ChooseScenario/ChooseScenario";
+import ScenarioDetail from "../pages/InterviewPractice/Candidate/Detail/Detail";
+import AnswerQuestion from "../pages/InterviewPractice/Candidate/AnswerQuestion/AnswerQuestion";
+import Review from "../pages/InterviewPractice/Candidate/Review/Review";
+import TestDetailLayout from "../page/candidate/tests/[id]/layout";
+
 const router = createBrowserRouter([
 	{
 		errorElement: <ErrorPage />,
@@ -164,6 +171,31 @@ const router = createBrowserRouter([
 					},
 				],
 			},
+			{
+				path: paths.INTERVIEWPRACTICE.ROOT,
+				element: <LayoutInterviewPractice />,
+				children: [
+					{
+						path: paths.INTERVIEWPRACTICE.PICK,
+						element: <PickAField />,
+					},
+					{
+						path: paths.INTERVIEWPRACTICE.CHOOSE,
+						element: <ChooseScenario />,
+					},
+					{
+						path: paths.INTERVIEWPRACTICE.DETAIL,
+						element: <ScenarioDetail />,
+					},
+					{
+						path: paths.INTERVIEWPRACTICE.ANSWER,
+						element: <AnswerQuestion />,
+					},
+					{
+						path: paths.INTERVIEWPRACTICE.REVIEW,
+						element: <Review />,
+					}]
+			}
 		]
 	}
 ], {

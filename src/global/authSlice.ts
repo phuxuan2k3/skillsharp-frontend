@@ -2,17 +2,20 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../app/store.ts';
 import LocalStorageService from '../services/localstorage.service.ts';
 import authApi from '../features/Auth/authApi.ts';
+import { bulbasaur } from '../features/Auth/api/bulbasaur.ts';
 
 export type UserInfo = {
 	email: string;
-	firstName: string;
-	lastName: string;
+	username: string;
 	avatarPath: string;
 }
 
 export type Token = {
-	accessToken: string;
-	refreshToken: string;
+	access_token: string;
+	refresh_token: string;
+	role: bulbasaur.Role;
+	safe_id: string;
+	user_id: number;
 }
 
 export interface AuthState {
@@ -21,8 +24,8 @@ export interface AuthState {
 };
 
 export interface AuthStateResponse {
-	user: UserInfo,
-	tokens: Token,
+	user: UserInfo | null,
+	tokens: Token | null,
 }
 
 const initialState: AuthState = ((): AuthState => {
@@ -89,7 +92,6 @@ const authSlice = createSlice({
 					_clearAuthState(state); // Todo: clear again needed?
 					console.log('Logout completed');
 				})
-
 	},
 });
 

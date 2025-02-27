@@ -67,6 +67,14 @@ export const paths = {
 		SUBMISSION: {
 			ROOT: '/scenario/submission',
 			DETAIL: '/scenario/submission/detail',
-		}
+		},
 	},
+	INTERVIEWPRACTICE: {
+		ROOT: '/ipractice',
+		PICK: '/ipractice/pick',
+		CHOOSE: '/ipractice/choose',
+		DETAIL: '/ipractice/detail',
+		ANSWER: '/ipractice/answer',
+		REVIEW: '/ipractice/review',
+	}
 }

@@ -11,6 +11,9 @@ import DialogActions from '@mui/material/DialogActions';
 // import IconButton from '@mui/material/IconButton';
 // import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from "react-router-dom";
+import { grpcListScenario } from "../../../../features/grpcScenario/grpcScenario";
+import { useAppSelector } from "../../../../app/hooks";
+import { selectUserInfo } from "../../../../global/authSlice";
 // import { useEffect, useState } from "react";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -42,7 +45,7 @@ const scenarioData = [
 const ScenarioListView = () => {
     const [open, setOpen] = React.useState(false);
     const [selectedScenario, setSelectedScenario] = React.useState<typeof scenarioData[0] | null>(null);
-    const [scenarios, setScenarios] = React.useState(scenarioData);
+    const [scenarios, setScenarios] = React.useState<any[]>([]);
     const navigate = useNavigate();
 
     const handleGoToCreateScenario = () => {
@@ -73,10 +76,21 @@ const ScenarioListView = () => {
         }
         handleCloseDialog();
     };
-
+    React.useEffect(() => {
+        async function fetchData() {
+          try { 
+            const response = await grpcListScenario([1], 0, 10);
+            const data = response.toObject();
+            setScenarios(data.scenario || []);
+          } catch (err) {
+            console.error("Error fetching scenarios:", err);
+          }
+        }
+        fetchData();
+      }, []);
     return (
         <>
-            <div className="w-full flex-grow flex flex-col items-center px-4">
+            <div className="w-full flex-grow flex flex-col items-center px-4 font-arya">
                 <div className="w-full flex-1 flex-col mt-6 ml-16">
                     <div className="w-full text-4xl font-bold">Manage your Scenarios</div>
                     <div className="w-full text-xl font-semibold">You can manage all your scenarios here!</div>
@@ -86,8 +100,8 @@ const ScenarioListView = () => {
                     <div className="flex flex-col items-center">
                         <div className="w-4/6 flex flex-row justify-between font-semibold text-[var(--primary-color)] mb-4">
                             <span>Your scenarios ({scenarios.length})</span>
-                            <div className="h-full w-fit flex items-center cursor-pointer">
-                                <div className="h-7 w-7 flex items-center justify-center rounded-lg" onClick={() => handleGoToCreateScenario()}>
+                            <div className="h-full w-fit flex items-center cursor-pointer" onClick={() => handleGoToCreateScenario()}>
+                                <div className="h-7 w-7 flex items-center justify-center rounded-lg">
                                     <FontAwesomeIcon icon={faPlus} rotation={90} />
                                 </div>
 
@@ -98,7 +112,7 @@ const ScenarioListView = () => {
                         {/* Scenario List */}
                         {scenarios.map((scenario, index) => (
                             <div key={index} className="w-4/6 flex-1 flex flex-col bg-white rounded-lg shadow-primary p-6 border-r border-b border-solid border-primary items-between mb-4">
-                                <div className="font-medium mb-8 text-xl">
+                                <div className="font-bold mb-8 text-xl">
                                     <span>{scenario.title}</span>
                                 </div>
                                 <div className="mb-8">
@@ -169,3 +183,6 @@ const ScenarioListView = () => {
 }
 
 export default ScenarioListView
+
+
+

@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { backendUrl } from "../../app/env"
 
+const testBackendURL = backendEndpoint + '/darius';
 const testBackendURL = backendUrl + '/questionai';
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: testBackendURL,
+	baseUrl: "http://localhost:8080",
 	prepareHeaders: (headers) => {
 		headers.set('Content-Type', 'application/json');
 		return headers;

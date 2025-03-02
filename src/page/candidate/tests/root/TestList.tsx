@@ -7,8 +7,8 @@ import TestCard from "./TestCard";
 import { DifficultyLevel, FilterParams, useGetTestListPageDataQuery, useLazyGetFilteredQuery } from "./list.test-api";
 import FilterModal from "./FilterModal";
 import FetchStateContent from "../../../../components/redux-api/FetchStateContent";
-import MyPagination from "../../components/MyPagination";
 import { useLazyGetCompaniesQuery } from "../../../../features/Account/account.api";
+import MyPagination from "../../../../pages/Test/components/MyPagination";
 
 const perPage = 5;
 

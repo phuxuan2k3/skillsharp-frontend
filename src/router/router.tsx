@@ -1,10 +1,8 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Login from "../pages/Authen/login/Login";
-import Dashboard from "../page/landing/root/Dashboard";
-import TestDo from "../pages/Test/Candidate/[id]/do/page";
+import Dashboard from "../page/root/root/Dashboard";
 import { paths } from "./path"
 import Register from "../pages/Authen/register/Register";
-import TestList from "../pages/Test/Candidate/TestList/TestList";
 import Layout from "../page/candidate/tests/common/Layout";
 import TestDetail from "../page/candidate/tests/[id]/attempts/page";
 import TestEvaluate from "../page/candidate/tests/attempts/[id]/evaluation/TestEvaluate";
@@ -33,11 +31,28 @@ import ScenarioDetail from "../pages/InterviewPractice/Candidate/Detail/Detail";
 import AnswerQuestion from "../pages/InterviewPractice/Candidate/AnswerQuestion/AnswerQuestion";
 import Review from "../pages/InterviewPractice/Candidate/Review/Review";
 import TestDetailLayout from "../page/candidate/tests/[id]/layout";
+import TestList from "../page/candidate/tests/root/TestList";
+import TestDo from "../page/candidate/tests/[id]/do/page";
+import paths2 from "./path-2";
+
+import RootLayout from "../page/root/layout";
 
 const router = createBrowserRouter([
 	{
 		errorElement: <ErrorPage />,
 		children: [
+
+
+			{
+				path: paths2.root,
+				element: <RootLayout />,
+				children: [
+					{
+						path: paths2.root
+					}
+				]
+			},
+
 			{
 				path: paths.REGISTER,
 				element: <Register />,
@@ -46,10 +61,14 @@ const router = createBrowserRouter([
 				path: paths.LOGIN,
 				element: <Login />
 			},
+
+
 			{
 				path: "/",
 				element: <Dashboard />
 			},
+
+
 			{
 				path: paths.TEST.ROOT,
 				element: <Layout />,

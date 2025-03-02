@@ -1,5 +1,7 @@
-const path2 = {
+const paths2 = {
 	root: '/',
+	about: '/about',
+	pricing: '/pricing',
 	auth: {
 		login: '/auth/login',
 		register: '/auth/register',
@@ -29,4 +31,4 @@ const path2 = {
 	}
 }
 
-export default path2;
+export default paths2;

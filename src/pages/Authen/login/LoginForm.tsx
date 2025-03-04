@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import GradientBorder from "../../../components/GradientBorder"
+import GradientBorder from "../../../components/border/GradientBorder"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation, useGoogleMutation } from "../../../features/Auth/authApi";
 import { toErrorMessage } from "../../../error/fetchBaseQuery.error";
-import LocalLoading from "../../../components/LocalLoading";
-import LocalError from "../../../components/LocalError";
+import LocalLoading from "../../../components/local/LocalLoading";
+import LocalError from "../../../components/local/LocalError";
 import { useEffect } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { selectIsAuthenticated } from "../../../app/authSlice";

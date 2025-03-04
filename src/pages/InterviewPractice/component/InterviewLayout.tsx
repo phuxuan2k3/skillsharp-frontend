@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../../../components/navbar/Navbar";
-import FooterShort from "../../../components/FooterShort";
+import FooterShort from "../../../components/footers/FooterShort";
 import { paths } from "../../../router/path";
 
 export default function LayoutInterviewPractice() {

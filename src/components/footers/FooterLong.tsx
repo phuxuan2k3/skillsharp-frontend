@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
-const NoAuthFooter: React.FC = () => {
+const FooterLong: React.FC = () => {
 	return (
 		<footer className="bg-black text-white py-8">
 			<div className="container mx-auto px-6 md:px-12">
@@ -63,4 +63,4 @@ const NoAuthFooter: React.FC = () => {
 	);
 };
 
-export default NoAuthFooter;
+export default FooterLong;

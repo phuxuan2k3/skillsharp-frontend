@@ -8,6 +8,8 @@ import { useAppSelector } from "../../app/hooks";
 import { selectIsAuthenticated, selectUserInfo } from "../../app/authSlice";
 import { useLogoutMutation } from "../../features/Auth/authApi";
 
+// todo: split navbar variants: Noauth, Candidate, BM, ...
+
 const NavBar = ({ showNav = true }: { showNav?: boolean; }) => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);

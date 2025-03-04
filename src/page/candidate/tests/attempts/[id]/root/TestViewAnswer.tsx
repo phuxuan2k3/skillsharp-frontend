@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import GradientBorderNotGood from "../../../../../../components/GradientBorder.notgood";
+import GradientBorderNotGood from "../../../../../../components/border/GradientBorder.notgood";
 import { useNavigate, useParams } from "react-router-dom";
 import { paths } from "../../../../../../router/path";
 import { bufferTestViewAnswerData, FilterQuestionAnswerParams } from "./types";

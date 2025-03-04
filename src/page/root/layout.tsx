@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
-import NoauthNavbar from "../../components/navbar/NoauthNavbar";
-import NoAuthFooter from "./components/NoAuthFooter";
+import NavBar from "../../components/navbar/Navbar";
+import FooterShort from "../../components/footers/FooterShort";
 
 export default function NoauthLayout() {
 	return (
 		<>
-			<NoauthNavbar />
+			<NavBar />
 			<Outlet />
-			<NoAuthFooter />
+			<FooterShort />
 		</>
 	)
 }

@@ -1,6 +1,6 @@
 import { BaseQueryFn, createApi, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import { RootState } from "../../app/store";
-import { setAuthState, selectTokens, selectUserInfo } from "../../global/authSlice";
+import { setAuthState, selectTokens, selectUserInfo } from "../../app/authSlice";
 import { grpcRefreshToken } from '../Auth/grpcClient';
 import { url } from "../../app/env"
 

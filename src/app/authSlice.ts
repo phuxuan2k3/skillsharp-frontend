@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../app/store.ts';
+import { RootState } from './store.ts';
 import LocalStorageService from '../services/localstorage.service.ts';
 import authApi from '../features/Auth/authApi.ts';
 import { bulbasaur } from '../features/Auth/api/bulbasaur.ts';

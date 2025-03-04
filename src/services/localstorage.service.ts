@@ -1,4 +1,4 @@
-import { AuthState } from "../global/authSlice";
+import { AuthState } from "../app/authSlice";
 
 class LocalStorageService {
 	private static readonly authStateKey: string = 'authState';

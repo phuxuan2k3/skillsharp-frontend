@@ -5,7 +5,7 @@ import { faChevronDown, faRightToBracket } from "@fortawesome/free-solid-svg-ico
 import logo from "/svg/logo.svg";
 import skillsharp from "/svg/skillsharp.svg";
 import { useAppSelector } from "../app/hooks";
-import { selectIsAuthenticated, selectUserInfo } from "../global/authSlice";
+import { selectIsAuthenticated, selectUserInfo } from "../app/authSlice";
 import { useLogoutMutation } from "../features/Auth/authApi";
 
 const NavBar = ({ showNav = true }: { showNav?: boolean; }) => {

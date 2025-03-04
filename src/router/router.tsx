@@ -26,8 +26,6 @@ import Review from "../pages/InterviewPractice/Candidate/Review/Review";
 import ProfileDashboard from "../pages/Profile/Candidate/ProfileDashboard";
 import ProfileLayout from "../pages/Profile/components/Layout";
 import PricingPage from "../pages/Profile/Candidate/PricingPage";
-import { Dashboard } from "@mui/icons-material";
-import { Layout } from "lucide-react";
 import ErrorPage from "../components/errors/ErrorPage";
 import TestDetail from "../page/candidate/tests/[id]/attempts/page";
 import TestDo from "../page/candidate/tests/[id]/do/page";
@@ -35,26 +33,39 @@ import TestEvaluate from "../page/candidate/tests/attempts/[id]/evaluation/TestE
 import TestViewAnswer from "../page/candidate/tests/attempts/[id]/root/TestViewAnswer";
 import TestSchedule from "../page/candidate/tests/attempts/[id]/suggestions/TestSchedule";
 import TestList from "../page/candidate/tests/root/TestList";
+import Dashboard from "../page/root/root/Dashboard";
+import NoauthLayout from "../page/root/layout";
+import paths2 from "./path-2";
 
 const router = createBrowserRouter([
 	{
 		errorElement: <ErrorPage />,
 		children: [
 			{
-				path: paths.REGISTER,
-				element: <Register />,
+				children: [
+					{
+						path: paths2.auth.REGISTER,
+						element: <Register />,
+					},
+					{
+						path: paths2.auth.LOGIN,
+						element: <Login />
+					},
+				]
 			},
 			{
-				path: paths.LOGIN,
-				element: <Login />
-			},
-			{
-				path: "/",
-				element: <Dashboard />
+				path: paths2.ROOT,
+				element: <NoauthLayout />,
+				children: [
+					{
+						index: true,
+						element: <Dashboard />
+					}
+				]
 			},
 			{
 				path: paths.TEST.ROOT,
-				element: <Layout />,
+				element: <NoauthLayout />,
 				children: [
 					{
 						path: paths.TEST.LIST,

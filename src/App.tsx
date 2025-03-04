@@ -1,10 +1,5 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./router/router.tsx";
-import { useEffect } from "react";
-import { useRefreshMutation } from "./features/Auth/authApi.ts";
-import { clearAuthState, setAuthState } from "./global/authSlice.ts";
-import { useAppDispatch } from "./app/hooks.ts";
-import LocalStorageService from "./services/localstorage.service.ts";
 
 function App() {
 	// const [refresh] = useRefreshMutation();

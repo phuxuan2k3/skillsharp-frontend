@@ -8,7 +8,7 @@ import LocalLoading from "../../../components/LocalLoading";
 import LocalError from "../../../components/LocalError";
 import { useEffect } from "react";
 import { useAppSelector } from "../../../app/hooks";
-import { selectIsAuthenticated } from "../../../global/authSlice";
+import { selectIsAuthenticated } from "../../../app/authSlice";
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";

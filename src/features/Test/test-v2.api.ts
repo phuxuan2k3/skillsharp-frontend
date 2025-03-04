@@ -1,4 +1,4 @@
-import { testApi as api } from "../../features/Test/test.api";
+import { testApi as api } from "./test.api";
 const injectedRtkApi = api.injectEndpoints({
 	endpoints: (build) => ({
 		getTags: build.query<GetTagsApiResponse, GetTagsApiArg>({

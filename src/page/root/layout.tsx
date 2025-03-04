@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import NoAuthHeader from "./common/NoAuthHeader";
-import NoAuthFooter from "./common/NoAuthFooter";
+import NoAuthHeader from "./components/NoAuthHeader";
+import NoAuthFooter from "./components/NoAuthFooter";
 
-export default function Layout() {
+export default function NoauthLayout() {
 	return (
 		<>
 			<NoAuthHeader />

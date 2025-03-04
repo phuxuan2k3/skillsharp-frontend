@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../../../features/Auth/authApi";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
-import { selectIsAuthenticated } from "../../../global/authSlice";
+import { selectIsAuthenticated } from "../../../app/authSlice";
 import { toErrorMessage } from "../../../error/fetchBaseQuery.error";
 import LocalError from "../../../components/LocalError";
 import LocalLoading from "../../../components/LocalLoading";

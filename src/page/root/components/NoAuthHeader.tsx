@@ -21,7 +21,7 @@ const NoAuthHeader = ({ showNav = true }: { showNav?: boolean; }) => {
 	};
 
 	const handleLogoClick = () => {
-		navigate(paths2.root);
+		navigate(paths2.ROOT);
 	};
 
 	return <nav className="bg-white drop-shadow-lg">
@@ -95,10 +95,10 @@ const NoAuthHeader = ({ showNav = true }: { showNav?: boolean; }) => {
 						<div>
 							<FontAwesomeIcon className="block lg:hidden  text-[var(--primary-color)] text-xl" icon={faRightToBracket}></FontAwesomeIcon>
 							<div className="hidden lg:block">
-								<Link to={paths2.auth.login}>
+								<Link to={paths2.auth.LOGIN}>
 									<button className="px-3 mr-3 rounded-lg font-bold text-xl py-2 border-[var(--primary-color)] text-[var(--primary-color)] border-2">Log In</button>
 								</Link>
-								<Link to={paths2.auth.register}>
+								<Link to={paths2.auth.REGISTER}>
 									<button className="px-3 rounded-lg font-bold text-xl py-2  text-white bg-[var(--primary-color)]">Sign Up</button>
 								</Link>
 							</div>

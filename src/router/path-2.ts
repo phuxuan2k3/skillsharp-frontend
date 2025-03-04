@@ -1,29 +1,29 @@
 const paths2 = {
-	root: '/',
-	about: '/about',
-	pricing: '/pricing',
+	ROOT: '/',
+	ABOUT: '/about',
+	PRICING: '/pricing',
 	auth: {
-		login: '/auth/login',
-		register: '/auth/register',
+		LOGIN: '/auth/login',
+		REGISTER: '/auth/register',
 	},
 	candidate: {
-		root: '/candidate',
+		ROOT: '/candidate',
 		tests: {
-			root: '/candidate/tests',
+			ROOT: '/candidate/tests',
 			in(id: string = ":testId") {
 				return {
-					root: `/candidate/tests/${id}`,
-					attempts: `/candidate/tests/${id}/attempts`,
-					do: `/candidate/tests/${id}/do`,
+					ROOT: `/candidate/tests/${id}`,
+					ATTEMPTS: `/candidate/tests/${id}/attempts`,
+					DO: `/candidate/tests/${id}/do`,
 				}
 			},
 			attempts: {
-				root: '/candidate/attempts',
+				ROOT: '/candidate/attempts',
 				in(id: string = ":attemptId") {
 					return {
-						root: `/candidate/attempts/${id}`,
-						evaluation: `/candidate/attempts/${id}/evaluation`,
-						suggestions: `/candidate/attempts/${id}/suggestions`,
+						ROOT: `/candidate/attempts/${id}`,
+						EVALUATION: `/candidate/attempts/${id}/evaluation`,
+						RECOMMENDATION: `/candidate/attempts/${id}/recommendation`,
 					}
 				}
 			}

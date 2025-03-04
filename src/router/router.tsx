@@ -1,14 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Login from "../pages/Authen/login/Login";
-import Dashboard from "../page/root/root/Dashboard";
 import { paths } from "./path"
 import Register from "../pages/Authen/register/Register";
-import Layout from "../page/candidate/tests/common/Layout";
-import TestDetail from "../page/candidate/tests/[id]/attempts/page";
-import TestEvaluate from "../page/candidate/tests/attempts/[id]/evaluation/TestEvaluate";
-import ErrorPage from "../components/errors/ErrorPage";
-import TestSchedule from "../page/candidate/tests/attempts/[id]/suggestions/TestSchedule";
-import TestViewAnswer from "../page/candidate/tests/attempts/[id]/root/TestViewAnswer";
 import TestSubmissionListView from "../pages/Test/BusinessManager/TestSubmissionListView/TestSubmissionListView";
 import TestSubmissionDetail from "../pages/Test/BusinessManager/TestSubmissionDetail/TestSubmissionDetail";
 import TestListView from "../pages/Test/BusinessManager/TestListView/TestListView";
@@ -30,32 +23,23 @@ import ChooseScenario from "../pages/InterviewPractice/Candidate/ChooseScenario/
 import ScenarioDetail from "../pages/InterviewPractice/Candidate/Detail/Detail";
 import AnswerQuestion from "../pages/InterviewPractice/Candidate/AnswerQuestion/AnswerQuestion";
 import Review from "../pages/InterviewPractice/Candidate/Review/Review";
-import TestDetailLayout from "../page/candidate/tests/[id]/layout";
-import TestList from "../page/candidate/tests/root/TestList";
-import TestDo from "../page/candidate/tests/[id]/do/page";
-import paths2 from "./path-2";
-
-import RootLayout from "../page/root/layout";
-
 import ProfileDashboard from "../pages/Profile/Candidate/ProfileDashboard";
 import ProfileLayout from "../pages/Profile/components/Layout";
 import PricingPage from "../pages/Profile/Candidate/PricingPage";
+import { Dashboard } from "@mui/icons-material";
+import { Layout } from "lucide-react";
+import ErrorPage from "../components/errors/ErrorPage";
+import TestDetail from "../page/candidate/tests/[id]/attempts/page";
+import TestDo from "../page/candidate/tests/[id]/do/page";
+import TestEvaluate from "../page/candidate/tests/attempts/[id]/evaluation/TestEvaluate";
+import TestViewAnswer from "../page/candidate/tests/attempts/[id]/root/TestViewAnswer";
+import TestSchedule from "../page/candidate/tests/attempts/[id]/suggestions/TestSchedule";
+import TestList from "../page/candidate/tests/root/TestList";
+
 const router = createBrowserRouter([
 	{
 		errorElement: <ErrorPage />,
 		children: [
-
-
-			{
-				path: paths2.root,
-				element: <RootLayout />,
-				children: [
-					{
-						path: paths2.root
-					}
-				]
-			},
-
 			{
 				path: paths.REGISTER,
 				element: <Register />,
@@ -64,14 +48,10 @@ const router = createBrowserRouter([
 				path: paths.LOGIN,
 				element: <Login />
 			},
-
-
 			{
 				path: "/",
 				element: <Dashboard />
 			},
-
-
 			{
 				path: paths.TEST.ROOT,
 				element: <Layout />,
@@ -81,17 +61,12 @@ const router = createBrowserRouter([
 						element: <TestList />,
 					},
 					{
-						element: <TestDetailLayout />,
-						children: [
-							{
-								path: paths.TEST.DO,
-								element: <TestDo />
-							},
-							{
-								path: paths.TEST.ATTEMPTS,
-								element: <TestDetail />
-							},
-						]
+						path: paths.TEST.DO,
+						element: <TestDo />
+					},
+					{
+						path: paths.TEST.ATTEMPTS,
+						element: <TestDetail />
 					},
 					{
 						path: paths.TEST.VIEWANSWER,
@@ -105,8 +80,6 @@ const router = createBrowserRouter([
 						path: paths.TEST.SCHEDULE,
 						element: <TestSchedule />
 					},
-
-					// Business Manager
 					{
 						path: paths.TEST.SUBMISSION.ROOT,
 						children: [

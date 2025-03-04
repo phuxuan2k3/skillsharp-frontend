@@ -76,25 +76,11 @@ export const paths = {
 		DETAIL: '/ipractice/detail',
 		ANSWER: '/ipractice/answer',
 		REVIEW: '/ipractice/review',
+	},
+	PROFILE: {
+		ROOT: '/profile',
+	},
+	PRICING: {
+		ROOT: '/pricing',
 	}
-}
-SUBMISSION: {
-	ROOT: '/scenario/submission',
-		DETAIL: '/scenario/submission/detail',
-			},
-		},
-INTERVIEWPRACTICE: {
-	ROOT: '/ipractice',
-		PICK: '/ipractice/pick',
-			CHOOSE: '/ipractice/choose',
-				DETAIL: '/ipractice/detail',
-					ANSWER: '/ipractice/answer',
-						REVIEW: '/ipractice/review',
-		},
-PROFILE: {
-	ROOT: '/profile',
-		},
-PRICING: {
-	ROOT: '/pricing',
-		}
-	}
+};

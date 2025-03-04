@@ -3,12 +3,11 @@ import { faCircleCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons"
 import GradientBorderNotGood from "../../../../../../components/GradientBorder.notgood";
 import { useNavigate, useParams } from "react-router-dom";
 import { paths } from "../../../../../../router/path";
-import { useGetAttemptDetailQuery, useLazyGetAttemptAnswersQuery } from "../../../../../../pages/Test/Candidate/TestViewAnswer/viewanswer.test-api";
 import { bufferTestViewAnswerData, FilterQuestionAnswerParams } from "./types";
 import FetchStateContent from "../../../../../../components/redux-api/FetchStateContent";
 import { useEffect, useState } from "react";
 import MyPagination from "../../../../../../pages/Test/components/MyPagination";
-
+import { useGetAttemptDetailQuery, useLazyGetAttemptAnswersQuery } from "./viewanswer.test-api";
 
 const perPage = 10;
 

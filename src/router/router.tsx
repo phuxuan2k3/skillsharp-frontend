@@ -37,6 +37,9 @@ import paths2 from "./path-2";
 
 import RootLayout from "../page/root/layout";
 
+import ProfileDashboard from "../pages/Profile/Candidate/ProfileDashboard";
+import ProfileLayout from "../pages/Profile/components/Layout";
+import PricingPage from "../pages/Profile/Candidate/PricingPage";
 const router = createBrowserRouter([
 	{
 		errorElement: <ErrorPage />,
@@ -213,8 +216,29 @@ const router = createBrowserRouter([
 					{
 						path: paths.INTERVIEWPRACTICE.REVIEW,
 						element: <Review />,
-					}]
-			}
+					}
+				]
+			},
+			{
+				path: paths.PROFILE.ROOT,
+				element: <ProfileLayout />,
+				children: [
+					{
+						path: '',
+						element: <ProfileDashboard />,
+					},
+				],
+			},
+			{
+				path: paths.PRICING.ROOT,
+				element: <ProfileLayout />,
+				children: [
+					{
+						path: '',
+						element: <PricingPage />,
+					},
+				],
+			},
 		]
 	}
 ], {

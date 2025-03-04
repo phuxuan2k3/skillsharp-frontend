@@ -36,6 +36,7 @@ import TestList from "../page/candidate/tests/root/TestList";
 import Dashboard from "../page/root/root/Dashboard";
 import NoauthLayout from "../page/root/layout";
 import paths2 from "./path-2";
+import CandidateLayout from "../page/candidate/layout";
 
 const router = createBrowserRouter([
 	{
@@ -63,6 +64,17 @@ const router = createBrowserRouter([
 					}
 				]
 			},
+			{
+				path: paths2.candidate.ROOT,
+				element: <CandidateLayout />,
+				children: [
+					{
+					}
+				],
+			},
+
+
+
 			{
 				path: paths.TEST.ROOT,
 				element: <NoauthLayout />,

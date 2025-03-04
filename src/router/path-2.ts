@@ -28,7 +28,8 @@ const paths2 = {
 				}
 			}
 		},
-	}
+	},
+
 }
 
 export default paths2;

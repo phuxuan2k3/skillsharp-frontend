@@ -1,9 +1,3 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// import GradientBorder from "../components/GradientBorder"
-// import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
-// import { useNavigate } from "react-router-dom";
-import Navbar from "../../../components/Navbar";
-
 const Dashboard = () => {
 	const features = [
 		{

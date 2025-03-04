@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import Navbar from "../../../../components/Navbar";
+import Navbar from "../../../../components/navbar/Navbar";
 import FooterShort from "../../../../components/FooterShort";
 import { paths } from "../../../../router/path";
 import { TestContextProvider } from "./context";

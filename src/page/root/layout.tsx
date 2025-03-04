@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import NoAuthHeader from "./components/NoAuthHeader";
+import NoauthNavbar from "../../components/navbar/NoauthNavbar";
 import NoAuthFooter from "./components/NoAuthFooter";
 
 export default function NoauthLayout() {
 	return (
 		<>
-			<NoAuthHeader />
+			<NoauthNavbar />
 			<Outlet />
 			<NoAuthFooter />
 		</>

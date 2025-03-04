@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import logo from "/svg/logo.svg";
 import skillsharp from "/svg/skillsharp.svg";
-import paths2 from "../../../router/path-2";
+import paths2 from "../../router/path-2";
 
-const NoAuthHeader = ({ showNav = true }: { showNav?: boolean; }) => {
+const NoauthNavbar = ({ showNav = true }: { showNav?: boolean; }) => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const navigate = useNavigate();
 
@@ -120,5 +120,5 @@ const NoAuthHeader = ({ showNav = true }: { showNav?: boolean; }) => {
 	</nav>
 }
 
-export default NoAuthHeader;
+export default NoauthNavbar;
 

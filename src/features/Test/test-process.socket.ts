@@ -15,9 +15,10 @@ class SocketTestProcess {
 	connect(testId: string) {
 		if (this._hasConnected) return;
 		this._instance.connect();
-		this._instance.emit('register-process', testId);
-		this._hasConnected = true;
-		console.log('Connected to test-process socket: ', this._instance.id);
+		this._instance.emit('register-process', testId, () => {
+			console.log('Registered test-process socket: ', this._instance.id);
+			this._hasConnected = true;
+		});
 	}
 
 	disconnect() {

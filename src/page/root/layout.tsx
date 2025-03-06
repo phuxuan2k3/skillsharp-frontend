@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../../components/navbar/Navbar";
-import FooterShort from "../../components/footers/FooterShort";
+import FooterLong from "../../components/footers/FooterLong";
 
-export default function NoauthLayout() {
+export default function RootLayout() {
 	return (
 		<>
 			<NavBar />
 			<Outlet />
-			<FooterShort />
+			<FooterLong />
 		</>
 	)
 }

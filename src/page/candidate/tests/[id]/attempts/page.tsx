@@ -1,6 +1,5 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetTestDisplayQuery, useLazyGetAttemptsQuery } from './apis/api';
 import { TestAttemptsResponse } from "./types";
 import { Attempt, FilterParams, TestAttemptsProps } from './types';
 import FetchStateContent from '../../../../../components/redux-api/FetchStateContent';
@@ -11,6 +10,7 @@ import { Paged } from '../../../../../interfaces/paged.type';
 import AttemptCardFinished from './components/AttemptCardFinished';
 import AttemptCardInProgress from './components/AttemptCardInProgress';
 import Sidebar from './components/Sidebar';
+import { useGetTestDisplayQuery, useLazyGetAttemptsQuery } from './apis/api';
 
 const perPage = 5;
 const bufferTestResponseData: TestAttemptsResponse = {

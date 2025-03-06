@@ -7,6 +7,7 @@ import skillsharp from "/svg/skillsharp.svg";
 import { useAppSelector } from "../../app/hooks";
 import { selectIsAuthenticated, selectUserInfo } from "../../app/authSlice";
 import { useLogoutMutation } from "../../features/Auth/authApi";
+import paths2 from "../../router/path-2";
 
 // todo: split navbar variants: Noauth, Candidate, BM, ...
 
@@ -86,9 +87,10 @@ const NavBar = ({ showNav = true }: { showNav?: boolean; }) => {
 									</button>
 									<div className={`transition-opacity duration-200 ${showQuestionsMenu ? "opacity-100 visible" : "opacity-0 invisible"}`}>
 										<div className="space-y-2">
-											<a href="/test/list" className="block px-4 py-2 text-sm text-black bg-gray-100 rounded-md hover:bg-gray-200">
+											<Link to={paths2.candidate.tests.ROOT} className="block px-4 py-2 text-sm text-black bg-gray-100 rounded-md hover:bg-gray-200">
 												Candidate
-											</a>
+											</Link>
+
 											<a href="/test/testlistview" className="block px-4 py-2 text-sm text-black bg-gray-100 rounded-md hover:bg-gray-200">
 												BM
 											</a>
@@ -106,14 +108,6 @@ const NavBar = ({ showNav = true }: { showNav?: boolean; }) => {
 							</div>
 						</div>
 					)}
-					{/* {showNav && <div className="hidden w-full sm:block">
-						<div className="flex space-x-5 justify-center items-center">
-							<a href="#" className="text-nowrap rounded-md px-3 py-2 text-lg font-semibold text-black hover:bg-[var(--primary-color)] hover:text-white" aria-current="page">Courses <FontAwesomeIcon icon={faChevronDown} /></a>
-							<a href="#" className="text-nowrap rounded-md px-3 py-2 text-lg font-semibold text-black hover:bg-[var(--primary-color)] hover:text-white">Questions <FontAwesomeIcon icon={faChevronDown} /> </a>
-							<a href="#" className="rounded-md px-3 py-2 text-lg font-semibold text-black hover:bg-[var(--primary-color)] hover:text-white">Mock</a>
-							<a href="#" className="rounded-md px-3 py-2 text-lg font-semibold text-black hover:bg-[var(--primary-color)] hover:text-white">Pricing</a>
-						</div>
-					</div>} */}
 				</div>
 				<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 					<div className="relative ml-3">

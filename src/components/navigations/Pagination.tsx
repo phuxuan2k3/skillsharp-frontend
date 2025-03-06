@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState } from "react";
-import { MyPaginationProps } from "../props";
-import { Pagination, ThemeProvider, createTheme } from "@mui/material";
+import { Pagination as MUIPagination, ThemeProvider, createTheme } from "@mui/material";
 
 declare module '@mui/material/styles' {
 	interface Palette {
@@ -31,11 +30,17 @@ theme = createTheme({
 	}
 });
 
-export default function MyPagination_var1({
+interface Props {
+	totalPage: number;
+	initialPage?: number;
+	onPageChange?: (page: number) => void;
+}
+
+export default function Pagination({
 	totalPage,
 	initialPage,
 	onPageChange
-}: MyPaginationProps) {
+}: Props) {
 	const [page, setPage] = useState(initialPage ?? 1);
 	const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
 		setPage(value);
@@ -45,7 +50,7 @@ export default function MyPagination_var1({
 	};
 	return (
 		<ThemeProvider theme={theme}>
-			<Pagination
+			<MUIPagination
 				count={totalPage}
 				page={page}
 				variant='outlined'

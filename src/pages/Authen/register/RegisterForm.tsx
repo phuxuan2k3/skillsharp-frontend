@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { selectIsAuthenticated } from "../../../app/authSlice";
 import { toErrorMessage } from "../../../error/fetchBaseQuery.error";
-import LocalError from "../../../components/local/LocalError";
-import LocalLoading from "../../../components/local/LocalLoading";
-import LocalSuccess from "../../../components/local/LocalSuccess";
+import LocalError from "../../../components/state/LocalError";
+import LocalLoading from "../../../components/state/LocalLoading";
+import LocalSuccess from "../../../components/state/LocalSuccess";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 

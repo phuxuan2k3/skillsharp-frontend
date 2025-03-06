@@ -32,11 +32,12 @@ import TestDo from "../page/candidate/tests/[id]/do/page";
 import TestEvaluate from "../page/candidate/tests/attempts/[id]/evaluation/TestEvaluate";
 import TestViewAnswer from "../page/candidate/tests/attempts/[id]/root/TestViewAnswer";
 import TestSchedule from "../page/candidate/tests/attempts/[id]/suggestions/TestSchedule";
-import TestList from "../page/candidate/tests/root/TestList";
+import TestListPage from "../page/candidate/tests/root/page";
 import Dashboard from "../page/root/root/Dashboard";
-import NoauthLayout from "../page/root/layout";
+import RootLayout from "../page/root/layout";
 import paths2 from "./path-2";
 import CandidateLayout from "../page/candidate/layout";
+import React from "react";
 
 const router = createBrowserRouter([
 	{
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: paths2.ROOT,
-				element: <NoauthLayout />,
+				element: <RootLayout />,
 				children: [
 					{
 						index: true,
@@ -69,20 +70,20 @@ const router = createBrowserRouter([
 				element: <CandidateLayout />,
 				children: [
 					{
+						path: paths2.candidate.tests.ROOT,
+						element: <TestListPage />,
 					}
 				],
 			},
 
 
+			// Old
+
 
 			{
 				path: paths.TEST.ROOT,
-				element: <NoauthLayout />,
+				element: <RootLayout />,
 				children: [
-					{
-						path: paths.TEST.LIST,
-						element: <TestList />,
-					},
 					{
 						path: paths.TEST.DO,
 						element: <TestDo />

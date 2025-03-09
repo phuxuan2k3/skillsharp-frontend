@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import { TestWithNoCompany, useLazyGetFilteredQuery } from "../../../../page/candidate/tests/root/list.test-api";
+import { TestWithNoCompany, useLazyGetFilteredQuery } from "../../../../legacy/candidate/tests/root/list.test-api";
 
 const TestListView = () => {
 	const [snackbar, setSnackbar] = useState<{ snackOpen: boolean; snackMessage: string; snackSeverity: 'error' | 'info' | 'success' | 'warning' }>({ snackOpen: false, snackMessage: '', snackSeverity: 'info' });

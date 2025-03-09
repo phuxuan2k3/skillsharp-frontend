@@ -27,16 +27,16 @@ import ProfileDashboard from "../pages/Profile/Candidate/ProfileDashboard";
 import ProfileLayout from "../pages/Profile/components/Layout";
 import PricingPage from "../pages/Profile/Candidate/PricingPage";
 import ErrorPage from "../components/errors/ErrorPage";
-import TestDetail from "../page/candidate/tests/[id]/attempts/page";
-import TestDo from "../page/candidate/tests/[id]/do/page";
-import TestEvaluate from "../page/candidate/tests/attempts/[id]/evaluation/TestEvaluate";
-import TestViewAnswer from "../page/candidate/tests/attempts/[id]/root/TestViewAnswer";
-import TestSchedule from "../page/candidate/tests/attempts/[id]/suggestions/TestSchedule";
-import TestListPage from "../page/candidate/tests/root/page";
-import Dashboard from "../page/root/root/Dashboard";
-import RootLayout from "../page/root/layout";
+import TestAttemptsPage from "../page/candidate/tests/TestAttemptsPage";
+import TestDo from "../legacy/candidate/tests/[id]/do/page";
+import TestEvaluate from "../legacy/candidate/tests/attempts/[id]/evaluation/TestEvaluate";
+import TestViewAnswer from "../legacy/candidate/tests/attempts/[id]/root/TestViewAnswer";
+import TestSchedule from "../legacy/candidate/tests/attempts/[id]/suggestions/TestSchedule";
+import TestListPage from "../page/candidate/tests/TestsPage";
+import Dashboard from "../page/common/DashboardPage";
+import RootLayout from "../features/Test/layouts/layout";
 import paths2 from "./path-2";
-import CandidateLayout from "../page/candidate/layout";
+import CandidateLayout from "../legacy/candidate/layout";
 import React from "react";
 
 const router = createBrowserRouter([
@@ -72,6 +72,11 @@ const router = createBrowserRouter([
 					{
 						path: paths2.candidate.tests.ROOT,
 						element: <TestListPage />,
+						index: true
+					},
+					{
+						path: paths2.candidate.tests.id().ATTEMPTS,
+						element: <TestAttemptsPage />
 					}
 				],
 			},
@@ -90,7 +95,7 @@ const router = createBrowserRouter([
 					},
 					{
 						path: paths.TEST.ATTEMPTS,
-						element: <TestDetail />
+						element: <TestAttemptsPage />
 					},
 					{
 						path: paths.TEST.VIEWANSWER,

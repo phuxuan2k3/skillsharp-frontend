@@ -3,9 +3,9 @@ import GradientBorder from "../../../components/border/GradientBorder"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation, useGoogleMutation } from "../../../features/Auth/authApi";
-import { toErrorMessage } from "../../../error/fetchBaseQuery.error";
-import LocalLoading from "../../../components/state/LocalLoading";
-import LocalError from "../../../components/state/LocalError";
+import { toErrorMessage } from "../../../components/errors/fetchBaseQuery.error";
+import LocalLoading from "../../../components/legacy/LocalLoading";
+import LocalError from "../../../components/legacy/LocalError";
 import { useEffect } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { selectIsAuthenticated } from "../../../app/authSlice";

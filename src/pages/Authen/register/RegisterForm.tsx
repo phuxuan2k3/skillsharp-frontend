@@ -6,10 +6,10 @@ import { useRegisterMutation } from "../../../features/Auth/authApi";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { selectIsAuthenticated } from "../../../app/authSlice";
-import { toErrorMessage } from "../../../error/fetchBaseQuery.error";
-import LocalError from "../../../components/state/LocalError";
-import LocalLoading from "../../../components/state/LocalLoading";
-import LocalSuccess from "../../../components/state/LocalSuccess";
+import { toErrorMessage } from "../../../components/errors/fetchBaseQuery.error";
+import LocalError from "../../../components/legacy/LocalError";
+import LocalLoading from "../../../components/legacy/LocalLoading";
+import LocalSuccess from "../../../components/legacy/LocalSuccess";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 
